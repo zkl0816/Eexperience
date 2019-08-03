@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id='pss'>root</div>
+    <!-- setState的注意点 -->
+    <script src='./js/react.js'></script>
+    <script src='./js/reactdom.js'></script>
+    <script src='./js/babel.js'></script>
+
+    <script type="text/babel">
+       class Con extends React.Component{
+        state={
+            count:1
+        }
+        render(){
+            console.log('render')
+            return <p><span>{this.state.count}</span><button onClick={this.change.bind(this)}>添加数量</button></p>
+        }
+        change(){
+            let num=this.state.count;
+            this.setState({count:1+num})
+            console.log(num,'3');
+            // setTimeout(() => {
+            //     this.setState({count:1+num})
+            //     console.log(num,'2');
+            // }, 0);
+            this.setState({count:1+num})
+            console.log(num,'1');
+            // this.setState({count:1+num})
+            // console.log(num);
+        }
+       }
+
+       ReactDOM.render(
+           <Con/>,
+           document.getElementById('pss'))
+    </script>
+    
+</body>
+</html>
